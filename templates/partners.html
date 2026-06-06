@@ -1,0 +1,88 @@
+<!-- partners_head -->
+<div class="head-boxes {class}">
+    <span class="head-boxes-head">{title}</span>
+    <h2 class="head-h2">
+        <span class="head-boxes-title">{title}</span>
+    </h2>
+    <p class="head-boxes-foot">{subtitle}</p>
+</div>
+<!-- END -->
+<!-- partners_main -->
+<div class="card-body">
+    <div class="row g-4">
+
+        {foreach partners as partner}
+            <div class="col-md-6 col-lg-3 d-flex">
+
+                <div class="card partner-card w-100 color-{partner.color}">
+
+                    <div class="partner-logo-wrapper bg-{partner.color}">
+                        <img src="{partner.logo}"
+                             alt="{partner.name}"
+                             class="partner-logo"
+                             loading="lazy">
+                    </div>
+
+
+                    <div class="card-body">
+                        <div class="partner-title">{partner.name}</div>
+                        <div class="partner-description">{partner.description}</div>
+
+                        {if partner.slug != ""}
+                        <a href="{partner.slug}"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           onclick="fetch('/includes/plugins/partners/click.php?id={partner.id}');"
+                           class="btn btn-outline-{partner.color} partner-btn">
+                            {partner.learn_more}
+                        </a>
+                        {else}
+                        <span class="text-muted partner-btn">{partner.no_valid_link}</span>
+                        {endif}
+                    </div>
+
+                </div>
+
+            </div>
+        {/foreach}
+
+    </div>
+</div>
+
+
+<!-- END -->
+<!-- part1ners_main -->
+<div class="card">
+  <div class="card-body">
+    <div class="row g-4">
+      {foreach partners as partner}
+        <div class="col-md-6 col-lg-4">
+          <div class="card p-3 img-wra1pper alert alert-{partner.color}">
+            <h5 class="card-title">{partner.name}</h5>
+            <div class="row g-2">
+              <div class="col-4" style="min-height: 205px;">
+                <img src="{partner.logo}" alt="Logo von {partner.name}" class="card-img-top" loading="lazy">
+              </div>
+              <div class="col-8 d-flex flex-column justify-content-between">
+                  <p class="card-text">{partner.description}</p>
+
+                  {if partner.slug != ""}
+                    <a href="/includes/plugins/partners/click.php?id={partner.id}"
+                       target="_blank"
+                       rel="nofollow"
+                       class="btn btn-outline-{partner.color} btn-sm mt-auto align-self-end">
+                      {partner.learn_more}
+                    </a>
+                  {else}
+                    <span class="text-muted mt-auto align-self-end">{partner.no_valid_link}</span>
+                  {endif}
+                </div>
+            </div>
+          </div>
+        </div>
+      {/foreach}
+    </div>
+  </div>
+</div>
+
+<!-- END -->
